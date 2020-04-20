@@ -70,5 +70,15 @@ class Home extends React.Component {
       </div>
     )
   }
+
+  // 组件更新的狗子函数，也要修改selectTab高亮
+  // 以后如果非要在componentDidUpdate中更新数据, 注意一定要设置更新的条件
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      this.setState({
+        selectedTab: this.props.location.pathname,
+      })
+    }
+  }
 }
 export default Home
